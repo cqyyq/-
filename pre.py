@@ -80,18 +80,18 @@ class GraphSearchVisualizer:
         edge_labels = {(u, v): d['weight'] for u, v, d in self.G.edges(data=True)}
         nx.draw_networkx_edge_labels(self.G, self.pos, edge_labels=edge_labels, font_size=7, ax=self.ax)
         
-        # 高亮已访问节点（如果有）
+        # 高亮已访问节点
         if visited_nodes:
             nx.draw_networkx_nodes(self.G, self.pos, nodelist=visited_nodes,
                                  node_color="orange", node_size=800, ax=self.ax)
         
-        # 高亮当前路径（如果有）
+        # 高亮当前路径
         if current_path and len(current_path) > 1:
             nx.draw_networkx_edges(self.G, self.pos,
                                   edgelist=[(current_path[i], current_path[i+1]) for i in range(len(current_path)-1)],
                                   edge_color="red", width=2, ax=self.ax)
         
-        # 高亮当前节点（如果有）
+        # 高亮当前节点
         if current_node:
             nx.draw_networkx_nodes(self.G, self.pos, nodelist=[current_node],
                                  node_color="red", node_size=800, ax=self.ax)
@@ -250,7 +250,7 @@ class GraphSearchVisualizer:
     
     def update_animation(self, frame):
         """更新动画帧"""
-        if not self.is_animating:  # 如果重置被触发，停止动画
+        if not self.is_animating: 
             return
         
         if frame < len(self.search_steps):
@@ -262,7 +262,7 @@ class GraphSearchVisualizer:
     
     def start_search(self):
         """开始搜索动画"""
-        self.reset()  # 先重置确保状态干净
+        self.reset() 
         
         self.is_animating = True
         self.generate_search_steps()
@@ -276,7 +276,7 @@ class GraphSearchVisualizer:
     
     def reset(self):
         """重置图形"""
-        self.is_animating = False  # 设置标志位停止动画
+        self.is_animating = False  
         
         if self.animation:
             try:
