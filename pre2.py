@@ -8,7 +8,7 @@ from matplotlib.colors import ListedColormap
 plt.rcParams['font.sans-serif'] = ['SimHei']
 plt.rcParams['axes.unicode_minus'] = False
 
-# 原始地图（包含捷径 0.3，但我们禁用它）
+# 原始地图
 raw_grid = np.array([
     [1, 1, 1, 5, 1, 1, 0, 1],
     [1, 0, 1, 5, 1, 0, 0, 1],
@@ -21,7 +21,7 @@ raw_grid = np.array([
 ])
 start, goal = (0, 0), (7, 7)
 
-# 禁用捷径（没有设置为 0.3，因此这里不修改）
+# 禁用捷径
 processed_grid = np.copy(raw_grid)
 
 # 可视化映射：0=障碍，1=普通，2=拥堵
@@ -122,5 +122,5 @@ plt.title("A*路径规划", fontsize=16, pad=20)
 plt.tight_layout()
 plt.show()
 
-# 保存为GIF文件（确保安装 pillow）
+# 保存为GIF文件
 ani.save('a_star_path.gif', writer='pillow', fps=2)
